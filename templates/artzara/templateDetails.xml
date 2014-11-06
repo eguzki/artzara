@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="template">
+  <name>Artzara</name>
+  <creationDate>28.01.05</creationDate>
+  <author>Eguzki Astiz</author>
+  <copyright>All rights reserved!</copyright>
+  <authorEmail>eguzki@bigfoot.com</authorEmail>
+  <authorUrl>www.eguzki.org</authorUrl>
+  <version>2.0</version>
+  <description>A bright portal template with a ice header and a snow footer.</description>
+  <files>
+    <filename>index.php</filename>
+    <filename>template_thumbnail.png</filename>
+  </files>
+  <images>
+    <filename>images/arrow2up.gif</filename>
+    <filename>images/arrow.gif</filename>
+    <filename>images/bottom_snow.jpg</filename>
+    <filename>images/headermainbg.gif</filename>
+    <filename>images/headermenbg.gif</filename>
+    <filename>images/logo3.gif</filename>
+    <filename>images/topshadow.gif</filename>
+	<filename>images/background.gif</filename>
+  </images>
+  <css>
+    <filename>css/template_css.css</filename>
+  </css>
+</mosinstall>

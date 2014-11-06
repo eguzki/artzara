@@ -1,0 +1,515 @@
+/**
+* AkoWinterportal - A Mambo 4.5 template
+* @version 2.0
+* @package AkoWinterportal
+* @copyright (C) 2004 by Arthur Konze - All rights reserved!
+* @license http://www.konze.de/content/view/8/26/ Copyrighted Commercial Software
+*/
+
+/* #################### MISC SETTINGS #################### */
+BODY {
+  	margin: 0px 0px 0px 0px;
+	color : #333;
+	background-color: #FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.pagenav {
+	font-size : 10px;
+}
+a.pagenav {
+	color : #808080;
+	font-size : 10px;
+	text-decoration : underline;
+}
+a.pagenav:hover {
+	color : #FFF;
+	font-size : 10px;
+}
+a.pagenav:active {
+	color : #333;
+	font-size : 10px;
+}
+
+HR {
+  background       : #CCCCCC;
+  height           : 1px;
+  width            : 75%;
+}
+
+li {
+  list-style       : inside url(../images/arrow.gif) 2px;
+  list-style-image : url(../images/arrow.gif);
+}
+
+.navigationline {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-size        : 11px;
+  color            : #CCCCCC;
+}
+
+/* ###################### UPPER BUTTON BAR ###################### */
+.buttonbar {
+  display          : block;
+  font-family      : Arial, Helvetica, serif;
+  width            : 100%;
+  text-align       : center;
+  font-weight      : normal;
+  text-decoration  : none;
+}
+
+a.buttonbar:link, a.buttonbar:visited {
+  font-size        : 15px;
+  padding-top      : 1px;
+  padding-bottom   : 1px;
+  text-decoration  : none;
+  border-top       : 1px solid #95BFD1;
+  border-left      : 1px solid #95BFD1;
+  border-right     : 1px solid #427D96;
+  border-bottom    : 1px solid #427D96;
+  background-color : #50A9DC;
+  color            : #FFFFFF
+}
+a.buttonbar:hover {
+  padding-top      : 1px;
+  padding-bottom   : 1px;
+  border-top       : 1px solid #427D96;
+  border-left      : 1px solid #427D96;
+  border-right     : 1px solid #95BFD1;
+  border-bottom    : 1px solid #95BFD1;
+  background-color : #308CC0;
+  color            : #FFFFFF
+}
+
+/* ################ MAIN AND SUB MENU SYSTEM ################ */
+a.mainlevel:link, a.mainlevel:visited {
+  color            : #808080;
+  font-size        : 15px;
+}
+
+a.mainlevel:hover {
+  color            : #7DB1C7;
+  font-size        : 15px;
+}
+
+/* ################### MODULE SETTINGS ################### */
+
+table.moduletable {
+  background-color : #F9F9F9;
+  border           : 1px solid #D9D9D9;
+  width            : 100%;
+  margin-bottom    : 10px;
+}
+
+table.moduletable th {
+  border           : 3px solid #F9F9F9;
+  font-weight      : bold;
+  text-align       : center;
+  color            : #333333;
+  height           : 27px;
+  background-color : #95CBE9;
+  background       : url('../images/mentitback.gif');
+  
+}
+
+table.moduletable td {
+  font-size        : 15px;
+  border           : 3px solid #F9F9F9;
+  font-weight      : normal;
+  color            : #333333;
+}
+
+/* ##############################ARTZARA################################## */
+
+/* ###################### LINKS ###################### */
+a:link, a:visited {
+  font-size        : 15px;
+  color            : black;
+  text-decoration  : none;
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+}
+
+a:hover {
+  color            : red;
+  text-decoration  : none;
+}
+
+a:active {
+  text-decoration  : underline;
+  color            : green;
+}
+
+.keypad {
+  	color: red;
+	width: 9em;
+	font-size: 15px;
+}
+
+table.menubar {
+	background-color : #F9F9F9;
+  border           : 1px solid #D9D9D9;
+  width            : 100%;
+  text-align		 : center;
+}
+table.menubar td {
+	font-size: 15px;
+}
+
+table.adminlist {
+	background-color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #CCCCCC;
+	border-spacing: 0px;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.adminlist th {
+	margin: 0px;
+	padding: 6px 4px 2px 4px;
+	height: 25px;
+	background: url(../images/background.gif);
+	background-repeat: repeat;
+	font-size: 11px;
+	color: #ffffff;
+}
+table.adminlist th.title {
+	text-align: left;
+}
+
+table.adminlist th a {
+	color: #ff9900;
+}
+
+table.adminlist tr.row0 {
+	background-color: #F5F5F5;
+}
+table.adminlist tr.row1 {
+	background-color: #FFF;
+}
+table.adminlist td {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 4px;
+}
+table.adminlist tr.row0:hover {
+	background-color: #f1f1f1;
+}
+table.adminlist tr.row1:hover {
+	background-color: #f1f1f1;
+}
+table.adminlist td.options {
+	background-color: #ffffff;
+	font-size: 8px;
+}
+
+table.sobretable {
+	background-color: #F1F3F5;
+	margin: 0px;
+	padding: 15px;
+	border: 1px solid #CCCCCC;
+	border-spacing: 0px;
+	width: 500px;
+}
+
+.main {
+	border: 1px solid #d5d5d5;
+	width: 99%;
+}
+
+.clr {
+    clear:both;
+    }
+
+.ctr {
+	text-align: center;
+}
+
+.login {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6em;
+	padding: 15px;
+	border: 1px solid #cccccc;
+	font-size: 15px;
+	width: 600px;
+	background: #F1F3F5;
+}
+
+.login-form {
+	text-align: left;
+	font-size: 15px;
+	float: right;
+	width: 70%;
+}
+
+.form-block {
+	border: 1px solid #cccccc;
+	font-size: 15px;
+	background: #E9ECEF;
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+
+.login-text {
+	text-align: left;
+	font-size: 15px;
+	width: 30%;
+	float: left;
+}
+
+.inputlabel {
+	font-weight: bold;
+	text-align: left;
+	font-size: 20px;
+	}
+
+table.adminform {
+	font-size: 15px;
+	background-color: #f5f5f5;
+	border: solid 1px #d5d5d5;
+	width: 100%;
+	padding: 10px;
+	border-collapse: collapse;
+}
+table.adminform tr.row0 {
+	background-color: #f5f5f5;
+}
+table.adminform tr.row1 {
+	background-color: #eeeeee;
+}
+table.adminform th {
+	font-size: 12px;
+	padding-top: 6px;
+	padding-bottom: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+	text-align: left;
+	height: 25px;
+	color: #ffffff;
+	background: url(../images/background.gif);
+	background-repeat: repeat;
+}
+table.adminform td {
+	padding: 3px;
+	text-align: left;
+}
+table.adminform td.editor {
+	font-size: 9px;
+}
+
+.adminheader {
+	color : #FF9900;
+	font-size : 24px;
+}
+
+table.adminheading {
+	background-color: #FFF;
+	font-family : Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	width: 99%;
+	border-collapse: collapse;
+	color: #FF9E31;
+	font-size : 18px;
+	font-weight: bold;
+	text-align: left;
+}
+table.adminheading th {
+	width: 99%;
+	height: 50px;
+	padding-left: 50px;
+	background: url(../../../administrator/images/asterisk.png) no-repeat left;
+}
+table.adminheading th.checkin {
+	background: url(../../../administrator/images/checkin.png) no-repeat left;
+}
+table.adminheading th.cpanel {
+	background: url(../../../administrator/images/cpanel.png) no-repeat left;
+}
+table.adminheading th.config {
+	background: url(../../../administrator/images/config.png) no-repeat left;
+}
+table.adminheading th.modules {
+	background: url(../../../administrator/images/module.png) no-repeat left;
+}
+table.adminheading th.menus {
+	background: url(../../../administrator/images/menu.png) no-repeat left;
+}
+table.adminheading th.trash {
+	background: url(../../../administrator/images/trash.png) no-repeat left;
+}
+table.adminheading th.user {
+	background: url(../../../administrator/images/user.png) no-repeat left;
+}
+table.adminheading th.inbox {
+	background: url(../../../administrator/images/inbox.png) no-repeat left;
+}
+table.adminheading th.msgconfig {
+	background: url(../../../administrator/images/message_config.png) no-repeat left;
+}
+table.adminheading th.langmanager {
+	background: url(../../../administrator/images/langmanager.png) no-repeat left;
+}
+table.adminheading th.mediamanager {
+	background: url(../../../administrator/images/mediamanager.png) no-repeat left;
+}
+table.adminheading th.impressions {
+	background: url(../../../administrator/images/impressions.png) no-repeat left;
+}
+table.adminheading th.browser {
+	background: url(../../../administrator/images/browser.png) no-repeat left;
+}
+table.adminheading th.searchtext {
+	background: url(../../../administrator/images/searchtext.png) no-repeat left;
+}
+table.adminheading th.templates {
+	background: url(../../../administrator/images/templatemanager.png) no-repeat left;
+}
+table.adminheading th.massemail {
+	background: url(../../../administrator/images/massemail.png) no-repeat left;
+}
+table.adminheading th.frontpage {
+	background: url(../../../administrator/images/frontpage.png) no-repeat left;
+}
+table.adminheading th.sections {
+	background: url(../../../administrator/images/sections.png) no-repeat left;
+}
+table.adminheading th.edit {
+	background: url(../../../administrator/images/addedit.png) no-repeat left;
+}
+table.adminheading th.categories {
+	background: url(../../../administrator/images/categories.png) no-repeat left;
+}
+table.adminheading th.install {
+	background: url(../../../administrator/images/install.png) no-repeat left;
+}
+table.adminheading th.dbbackup {
+	background: url(../../../administrator/images/backup.png) no-repeat left;
+}
+table.adminheading th.dbrestore {
+	background: url(../../../administrator/images/dbrestore.png) no-repeat left;
+}
+table.adminheading th.dbquery {
+	background: url(../../../administrator/images/query.png) no-repeat left;
+}
+table.adminheading th.info {
+	background: url(../../../administrator/images/systeminfo.png) no-repeat left;
+}
+
+table.adminheading td {
+	color : #000;
+}
+
+/* ###################### CONTENT PAGE SETTINGS ###################### */
+.contentpane {
+  padding-left     : 5px;
+  padding-right    : 5px;
+}
+
+.contentpaneopen {
+  padding-left     : 5px;
+  padding-right    : 5px;
+}
+
+.contentheading, .componentheading {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-size        : 13px;
+  font-weight      : bold;
+  color            : #333333;
+}
+
+.contentdescription {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-size        : 11px;
+  color            : #333333;
+  text-align       : left;
+}
+
+.sectionname {
+	color : #FF9900;
+	font-family : Arial, Helvetica, sans-serif;
+	font-size : 18px;
+	font-weight: bold;
+}
+
+/* ###################### FORMULAR SETTINGS ###################### */
+.button {
+  border-top : solid 1px #d5d5d5;
+	border-right : solid 1px #808080;
+	border-bottom : solid 1px #808080;
+	border-left : solid 1px #d5d5d5;
+	color : #333;
+	font-weight : bold;
+}
+
+.inputbox {
+  color: blue;
+	background: #E9EFF5;
+	font-family: Courier, Helvetica, sans-serif;
+	z-index: -3;
+	font-size: 11px;
+}
+
+.text_area {
+        border : 1px solid #999;
+        color: blue;
+        background: #E9EFF5;
+        font-family: Courier, Helvetica, sans-serif;
+        z-index: -3;
+        font-size: 11px
+}
+INPUT, TEXTAREA, SELECT {
+	color : blue;
+	z-index : -3;
+	font-size: 11px;
+}
+
+select.options, input.options {
+	font-size: 8px;
+	font-weight: normal;
+	border: 1px solid #999999;
+}
+
+/* ################### SECTION LISTING SETTINGS ################### */
+.sectiontableentry1 {
+  background-color : #F9F9F9;
+}
+
+.sectiontableentry2 {
+  background-color : #F0F0F0;
+}
+
+.sectiontableheader {
+  background-color : #CCCCCC;
+  color            : #2A7CA9;
+  font-weight      : bold;
+}
+
+/* ##################### SMALL FONT SETTINGS ##################### */
+.small {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-size        : 9px;
+  color            : #3366C0;
+  text-decoration  : none;
+  font-weight      : medium;
+}
+
+.smalldark {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-size        : 9px;
+  color            : #000000;
+  font-weight      : medium;
+}
+
+.createdate {
+  font-family      : Verdana, Arial, Helvetica, sans-serif;
+  font-size        : 9px;
+  color            : #999999;
+  text-decoration  : none;
+  font-weight      : medium;
+}

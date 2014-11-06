@@ -1,0 +1,259 @@
+<?xml version="1.0" ?>
+
+<mosinstall type="component">
+	<name>ArtzaraAdmin</name>
+	<creationDate>04/15/2004</creationDate>
+	<author>Asier eta Eguzki</author>
+	<copyright>This component in released under the GNU/GPL License</copyright>
+	<authorEmail>katutxakurra@yahoo.es</authorEmail>
+	<authorUrl>www.godofro.com</authorUrl>
+	<version>1.0</version>
+	<files>
+		<filename>artzaraadmin.php</filename>
+		<filename>artzaraadmin.html.php</filename>
+		<filename>artzaraadmin.lib.php</filename>
+		<filename>artzara.ddbb.php</filename>
+		<filename>artzara.lib.php</filename>
+		<filename>artzara.html.php</filename>
+		<filename>artzaralog.php</filename>
+		<filename>artzaraadmin.class.php</filename>
+		<filename>artzaraadmin.bodega.php</filename>
+		<filename>artzaraadmin.bodega.html.php</filename>
+		<filename>artzaraadmin.socios.php</filename>
+		<filename>artzaraadmin.socios.html.php</filename>
+		<filename>artzaraadmin.sobres.php</filename>
+		<filename>artzaraadmin.sobres.html.php</filename>
+		<filename>artzaraadmin.mensajes.php</filename>
+		<filename>artzaraadmin.mensajes.html.php</filename>
+		<filename>artzaraadmin.salidashaber.php</filename>
+		<filename>artzaraadmin.salidashaber.html.php</filename>
+		<filename>artzara.es.php</filename>
+		<filename>js/artzaraadminjavascript.js</filename>
+		<filename>js/artzarajavascript.js</filename>
+		<filename>js/bodegajavascript.js</filename>
+		<filename>calendario/javascripts.js</filename>
+		<filename>calendario/index.php</filename>
+		<filename>calendario/calendario.php</filename>
+		<filename>calendario/estilo.css</filename>
+		<filename>installation/index.php</filename>
+		<filename>keypad/keypad.php</filename>
+		<filename>keypad/keypadCE.jpg</filename>
+		<filename>keypad/keypadCE2.jpg</filename>
+		<filename>keypad/keypadCE3.jpg</filename>
+		<filename>keypad/keypad0_0.jpg</filename>
+		<filename>keypad/keypad0_1.jpg</filename>
+		<filename>keypad/keypad0_2.jpg</filename>
+		<filename>keypad/keypad1_0.jpg</filename>
+		<filename>keypad/keypad1_1.jpg</filename>
+		<filename>keypad/keypad1_2.jpg</filename>
+		<filename>keypad/keypad2_0.jpg</filename>
+		<filename>keypad/keypad2_1.jpg</filename>
+		<filename>keypad/keypad2_2.jpg</filename>
+		<filename>keypad/keypad3_0.jpg</filename>
+		<filename>keypad/keypad3_1.jpg</filename>
+		<filename>keypad/keypad3_2.jpg</filename>
+		<filename>keypad/keypad4_0.jpg</filename>
+		<filename>keypad/keypad4_1.jpg</filename>
+		<filename>keypad/keypad4_2.jpg</filename>
+		<filename>keypad/keypad5_0.jpg</filename>
+		<filename>keypad/keypad5_1.jpg</filename>
+		<filename>keypad/keypad5_2.jpg</filename>
+		<filename>keypad/keypad6_0.jpg</filename>
+		<filename>keypad/keypad6_1.jpg</filename>
+		<filename>keypad/keypad6_2.jpg</filename>
+		<filename>keypad/keypad7_0.jpg</filename>
+		<filename>keypad/keypad7_1.jpg</filename>
+		<filename>keypad/keypad7_2.jpg</filename>
+		<filename>keypad/keypad8_0.jpg</filename>
+		<filename>keypad/keypad8_1.jpg</filename>
+		<filename>keypad/keypad8_2.jpg</filename>
+		<filename>keypad/keypad9_0.jpg</filename>
+		<filename>keypad/keypad9_1.jpg</filename>
+		<filename>keypad/keypad9_2.jpg</filename>
+		<filename>log/log.txt</filename>
+	</files>
+	<images>
+			<filename>images/imagenX.jpg</filename>
+			<filename>images/sobre.gif</filename>
+	</images>
+	<install>
+		<queries>
+			<query>DROP TABLE IF EXISTS `mos_artzara_familias`;</query>
+			<query>CREATE TABLE `mos_artzara_familias` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`nombre` VARCHAR(20) NOT NULL,
+				`imagefile` TEXT,
+				`published` TINYINT(1) NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_productos`;</query>
+			<query>CREATE TABLE `mos_artzara_productos` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_grupo` INT NOT NULL,
+				`ref` INT,
+				`nombre` VARCHAR(30) NOT NULL,
+				`imagefile` TEXT,
+				`published` TINYINT(1) NOT NULL,
+				`precio_compra` DOUBLE NOT NULL,
+				`iva` DOUBLE NOT NULL,
+				`venta_publico_dosis` DOUBLE NOT NULL,
+				`recargo_dosis` DOUBLE NOT NULL,
+				`num_dosis_por_botella` INT NOT NULL,
+				`proveedor` VARCHAR(30),
+				`telefono_contacto` VARCHAR(30),
+				`email` VARCHAR(30),
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_stock`;</query>
+			<query>CREATE TABLE `mos_artzara_stock` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_grupo` INT NOT NULL,
+				`id_prod` INT NOT NULL,
+				`cantidad` INT NOT NULL,
+				`dosis` INT NOT NULL,
+				`fechamod` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_entradas`;</query>
+			<query>CREATE TABLE `mos_artzara_entradas` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_grupo` INT NOT NULL,
+				`id_prod` INT NOT NULL,
+				`cantidad` INT NOT NULL,
+				`inputdate` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_inventario`;</query>
+			<query>CREATE TABLE `mos_artzara_inventario` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_grupo` INT NOT NULL,
+				`id_prod` INT NOT NULL,
+				`cantidad` INT NOT NULL,
+				`dosis` INT NOT NULL,
+				`total` DOUBLE NOT NULL,
+				`inputdate` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_consumos`;</query>
+			<query>CREATE TABLE `mos_artzara_consumos` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_sobre` INT NOT NULL,
+				`id_grupo` INT NOT NULL,
+				`id_prod` INT NOT NULL,
+				`cantidad` INT NOT NULL,
+				`total` DOUBLE NOT NULL,
+				`inputdate` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_socios`;</query>
+			<query>CREATE TABLE `mos_artzara_socios` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`nombre` VARCHAR(20) NOT NULL,
+				`apellidos` VARCHAR(50) NOT NULL,
+				`nick` VARCHAR(20) NOT NULL,
+				`foto` TEXT,
+				`direccion` VARCHAR(50),
+				`dni` VARCHAR(9),
+				`telefono` VARCHAR(12),
+				`movil` VARCHAR(12),
+				`id_mambo` INT NOT NULL,
+				`acceso_admin` TINYINT(1) NOT NULL,
+				`email` VARCHAR(30),
+				`idioma` VARCHAR(3) NOT NULL,
+				`haber` DOUBLE NOT NULL,
+				`activo` TINYINT(1) NOT NULL,
+				`fecha_alta` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_cuentasocios`;</query>
+			<query>CREATE TABLE `mos_artzara_cuentasocios` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_socio` INT NOT NULL,
+				`pago` DOUBLE NOT NULL,
+				`saldo` DOUBLE NOT NULL,
+				`inputdate` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_sobres`;</query>
+			<query>CREATE TABLE `mos_artzara_sobres` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_socio` INT NOT NULL,
+				`total` DOUBLE NOT NULL,
+				`pago` DOUBLE,
+				`id_salida` INT,
+				`inputdate` DATETIME,
+				`processdate` DATETIME,
+				`state` TINYINT(1) NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_salidashaber`;</query>
+			<query>CREATE TABLE `mos_artzara_salidashaber` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`id_sobre` INT NOT NULL,
+				`inputdate` DATETIME NOT NULL,
+				`importe` DOUBLE NOT NULL,
+				`id_salida` INT NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_salidas`;</query>
+			<query>CREATE TABLE `mos_artzara_salidas` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`name` VARCHAR(30) NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_mensajes`;</query>
+			<query>CREATE TABLE `mos_artzara_mensajes` (
+				`id` INT NOT NULL AUTO_INCREMENT,
+				`msg` TEXT NOT NULL,
+				`subject` VARCHAR(50) NOT NULL,
+				`id_remite` INT NOT NULL,
+				`id_destino` INT NOT NULL,
+				`visto` TINYINT(1) NOT NULL,
+				`inputdate` DATETIME NOT NULL,
+				 PRIMARY KEY (`id`)
+				 )
+			</query>
+		</queries>
+	</install>
+	<uninstall>
+		<queries>
+			<query>DROP TABLE IF EXISTS `mos_artzara_familias`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_productos`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_stock`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_entradas`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_inventario`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_consumos`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_sobres`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_salidashaber`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_salidas`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_socios`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_cuentasocios`;</query>
+			<query>DROP TABLE IF EXISTS `mos_artzara_mensajes`;</query>
+		</queries>
+	</uninstall>
+	<installfile>
+		<filename>install.artzaraadmin.php</filename>
+	</installfile>
+	<uninstallfile>
+		<filename>uninstall.artzaraadmin.php</filename>
+	</uninstallfile>
+	<administration>
+	<menu>ArtzaraAdmin</menu>
+		<submenu>
+		</submenu>
+		<files>
+			<filename>artzara.txt</filename>
+		</files>
+	</administration>
+</mosinstall>

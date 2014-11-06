@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<mosinstall type="module">
+    <name>Informacion Socio</name>
+    <creationDate>June 28, 2004</creationDate>
+    <author>Eguzki Astiz</author>
+    <copyright>This template is released under the GNU/GPL License</copyright>
+    <authorEmail>eguzki@bigfoot.com</authorEmail>
+    <authorUrl>http://www.barca-hall.com</authorUrl>
+    <version>0.1</version>
+    <description>Informacion acerca del socio</description>
+     <files>
+         <filename module="mod_socio">mod_socio.php</filename>
+     </files>
+</mosinstall>

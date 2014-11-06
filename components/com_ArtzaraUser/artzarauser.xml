@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+
+<mosinstall type="component">
+	<name>ArtzaraUser</name>
+	<creationDate>04/15/2004</creationDate>
+	<author>Asier eta Eguzki</author>
+	<copyright>This component in released under the GNU/GPL License</copyright>
+	<authorEmail>katutxakurra@yahoo.es</authorEmail>
+	<authorUrl>www.godofro.com</authorUrl>
+	<version>1.0</version>
+	<files>
+		<filename>artzarauser.php</filename>
+		<filename>artzarauser.html.php</filename>
+		<filename>artzarauser.newsobre.php</filename>
+		<filename>artzarauser.socioinfo.php</filename>
+		<filename>artzarauser.socioinfo.html.php</filename>
+		<filename>artzarauser.mensajes.php</filename>
+		<filename>artzarauser.sobres.php</filename>
+		<filename>artzarauser.lib.php</filename>
+		<filename>js/artzarauserjavascript.js</filename>
+		<filename>log/log.txt</filename>
+	</files>
+	<images>
+	</images>
+	<install>
+		<queries>
+		</queries>
+	</install>
+	<uninstall>
+		<queries>
+		</queries>
+	</uninstall>
+	<installfile>
+		<filename>install.artzarauser.php</filename>
+	</installfile>
+	<uninstallfile>
+		<filename>uninstall.artzarauser.php</filename>
+	</uninstallfile>
+	<administration>
+	<menu>ArtzaraUser</menu>
+		<submenu>
+		</submenu>
+		<files>
+			<filename>artzara.txt</filename>
+		</files>
+	</administration>
+</mosinstall>
