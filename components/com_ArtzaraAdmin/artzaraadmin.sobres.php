@@ -142,7 +142,7 @@ function ModuloSobres($act)
 
 			$logFile->writeLog("ModuloSobres:salida tras el filtro:{$sobre->id_salida}");
 
-			if(!ArtzaraAdminLib::ProcesarSobre($sobre,$descuadre))
+			if(!GenericLib::ProcesarSobre($sobre,$descuadre))
 			{
 				EnvioError("NO SE HA PODIDO PROCESAR ESTE SOBRE. INTENTELO DE NUEVO",$task);
 				break;
