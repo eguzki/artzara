@@ -479,7 +479,7 @@ function ModuloNewSobre($act){
 				EnvioError("NO SE HA PODIDO PROCESAR ESTE SOBRE. INTENTELO DE NUEVO",$task);
 				break;
 			}
-			mosRedirect($baseURL."&task=$task");
+			mosRedirect($baseURL);
 			break;
 		case "remove":
 			//Borrar entrada(s)
