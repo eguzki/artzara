@@ -200,6 +200,136 @@ class GenericLib
 
 		return array(substr ($task, 0, 2),substr ($task, 2, 1));
 	}
+
+	function GenerarSalidaHaber($idSobre,$importe,$id_salida){
+		global $database, $logFile;
+		// Suponemos que idsobre e idsalida estan bien porque los hemos generado nosotros,
+		// no son datos qeu nos vienen del usuario
+		$logFile->writeLog("GenerarSalidaHaber");
+
+		$row = new mosArtzaraSalidasHaber( $database );
+
+		$row->id = 0;
+		$row->id_sobre=$idSobre;
+		$row->inputdate = date('Y-m-d H:i:s');
+		$row->importe=$importe;
+		$row->id_salida=$id_salida;
+		
+		if (!$row->store())
+		{
+			$logFile->writeLog("Error: ".$row->getError());
+			return FALSE;
+		}
+		// Tenemos los datos grabados
+		$logFile->writeLog("GenerarSalidaHaber: grabados OK!");
+		return TRUE;		
+	}
+
+	function ProcesarSobre(&$sobre,$descuadre){
+		global $database, $logFile;
+		$logFile->writeLog("ProcesarSobre: sobre: {$sobre->id} descuadre=$descuadre id_salida={$sobre->id_salida}");
+
+		// Tasks: 
+		// 1.- Actualizar Stock
+		//	2.- Contabilidad usuario 2.1: actualizar valor en cuenta 2.2: Nueva entrada en cuenta_usuarios
+		//	3.- Modificar sobre y guardar (estado, pagado, fecha proceso)
+
+		if($sobre === null || $descuadre === null)
+			return FALSE;
+
+		if($descuadre > 0 && $sobre->id_salida > 0){
+			$logFile->writeLog("ProcesarSobre: Generando salida hacia {$sobre->id_salida}");
+			// Descaudre positivo y id_salida diferente de 0 (usea no es para el usuario)
+			if(!GenericLib::GenerarSalidaHaber($sobre->id,$descuadre,$sobre->id_salida)){
+				EnvioError("NO SE HA PODIDO PROCESAR ESTE SOBRE. INTENTELO DE NUEVO",$task);
+				break;
+			}
+		}
+		elseif($descuadre != 0)
+		{
+			// Solo nueva entrada en cuenta socio si hay movimiento en la cuenta
+			// 1.- Actualizar contabilidad Usuarios
+			$socio = &DDBB::obtenerSocio($sobre->id_socio);
+			if($socio === null){
+				$logFile->writeLog("Error No se pudo obtener Socio: ");
+				return FALSE;
+			}
+
+			$socio->haber = $socio->haber + $descuadre;
+			if (!$socio->store())
+			{
+				$logFile->writeLog("Error: ".$socio->getError());
+				return FALSE;
+			}
+
+			$newCuentaSocio = new mosArtzaraCuentaSocios( $database );
+			$newCuentaSocio->id = 0;
+			$newCuentaSocio->id_socio = $sobre->id_socio;
+			$newCuentaSocio->saldo = $socio->haber;
+			$newCuentaSocio->pago = $descuadre;
+			$newCuentaSocio->inputdate = date('Y-m-d H:i:s');
+
+			if (!$newCuentaSocio->store())
+			{
+				$logFile->writeLog("Error: ".$newCuentaSocio->getError());
+				return FALSE;
+			}
+		}
+		// 2.- Actualizar Stock
+		$consumos = &DDBB::ObtenerConsumos($sobre->id);
+		foreach($consumos as $consumo){
+			$stockRow = &DDBB::obtenerStock($consumo->id_grupo,$consumo->id_prod);
+			$producto = &DDBB::obtenerProducto($consumo->id_prod);
+			$numDosisPorUnidad = $producto->num_dosis_por_botella;
+
+			// Tenemos $stockRow->cantidad y $stockRow->dosis unidades
+			// Hay que restar $consumo->cantidad dosis
+			// existen $numDosis dosis libres
+			$unidades_gastadas = intval($consumo->cantidad / $numDosisPorUnidad);
+			$dosis_gastadas = $consumo->cantidad % $numDosisPorUnidad;
+
+			$diff = $stockRow->cantidad - $unidades_gastadas;
+			$stockRow->cantidad = ($diff > 0)?$diff:0;
+
+			if($dosis_gastadas > $stockRow->dosis)
+			{
+				if($stockRow->cantidad>0)
+				{
+					$stockRow->cantidad--;
+					$stockRow->dosis = $stockRow->dosis + $numDosisPorUnidad - $dosis_gastadas;
+				}
+				else{
+					// Consumen dosis donde no hay!!!!
+				}
+			}
+			else
+			{
+				$stockRow->dosis = $stockRow->dosis - $dosis_gastadas;
+			}
+
+			$stockRow->fechamod = date('Y-m-d H:i:s');
+			if (!$stockRow->store())
+			{
+				$logFile->writeLog("Error Procesando sobre: Puede que la informacion de stock sea inconsistente: Error:");
+				$logFile->writeLog("Error: ".$row->getError());
+				// No devolvemos nada, pero si falla aqui se pueden dar inconsistencias
+			}
+			unset($stockRow);
+			unset($producto);
+		}
+
+		// 3.- Guardar sobre;
+		$sobre->processdate = date('Y-m-d H:i:s');
+		$sobre->state = _PROCESADO;
+		if (!$sobre->store())
+		{
+			$logFile->writeLog("Error: ".$sobre->getError());
+			return FALSE;
+		}
+		// Tenemos los datos grabados
+		$logFile->writeLog("ProcesarSobre: Procesado OK!");
+		return TRUE;
+	}
 }
 
 /****************************
@@ -338,19 +468,18 @@ function ModuloNewSobre($act){
 			unset($consumos);
 
 			// Terminar
-			$sobre->state = _NO_PROCESADO;
-			$sobre->pago = -1;
+			$sobre->pago = 0;
 			$sobre->id_salida = 0;
 			$sobre->inputdate = date('Y-m-d H:i:s');
 			$sobre->total = $total;
+			$descuadre = -$sobre->total;
 
-			if (!$sobre->store())
+			if(!GenericLib::ProcesarSobre($sobre,$descuadre))
 			{
-				EnvioError("Error: ".$newSobre->getError(),$task);
+				EnvioError("NO SE HA PODIDO PROCESAR ESTE SOBRE. INTENTELO DE NUEVO",$task);
 				break;
 			}
-			//Printeamos
-			mosRedirect("index2.php?option=$option&Itemid=$Itemid&task=990&idSobre={$sobre->id}");
+			mosRedirect($baseURL);
 			break;
 		case "remove":
 			//Borrar entrada(s)

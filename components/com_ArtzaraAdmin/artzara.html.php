@@ -429,7 +429,6 @@ function PantallaNewSobre(&$newSobre,&$consumos,$total,&$familias,$idFamilia=NUL
 			EnvioError(_PARAMETERS_INVALID,$task);
 			return;
 		}
-		$cerrarSobreLink = "index.php?option=$option&Itemid=$Itemid&task=$task&accion=cerrarsobre&idSobre={$newSobre->id}";
 ?>
 		<script language="JavaScript1.2">
 		function submitbutton(pressbutton) {
@@ -442,11 +441,9 @@ function PantallaNewSobre(&$newSobre,&$consumos,$total,&$familias,$idFamilia=NUL
 			else if(pressbutton == 'cerrarsobre'){
 				if (confirm('No podras modificarlo si continuas. ?Continuar?'))
 				{
-					var enlace = '<?php echo $cerrarSobreLink; ?>';
-					window.open(enlace, 'win2', 'status=no,toolbar=no,scrollbars=no,titlebar=no,menubar=no,resizable=no,width=400,height=560,directories=no,location=no');
-					settask('00');
+					setact(pressbutton);
 				}
-				return;
+                return;
 			}
 
 			// do field validation
